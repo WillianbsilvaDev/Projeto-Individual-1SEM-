@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+  background-color: #032820;
 }
 
 :root {
@@ -23,7 +23,7 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
+  border-bottom: 2px solid #80A316;
 }
 
 .header .container {
@@ -34,7 +34,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: white;
 }
 
 .agora {
@@ -51,7 +51,7 @@ body {
 }
 
 .titulo {
-  color: #32b9cd;
+  color: #14ffcc;
   width: fit-content;
   font-weight: 500;
 }
@@ -121,7 +121,7 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #08652C;
   height: 150px;
   color: #fff;
   display: flex;
@@ -153,12 +153,12 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: #06302b;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: white;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -183,7 +183,7 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #2CC295;
   text-align: center;
   border-radius: 10px;
   margin: 0;
