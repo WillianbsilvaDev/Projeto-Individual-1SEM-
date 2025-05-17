@@ -4,11 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-<<<<<<< HEAD:Portal FutebolSP Site/public/css/estilo.css
-  background-color: black;
-=======
   background-color: #434c62;
->>>>>>> 3cffff60d2222d28b78c403fd167f20457f58a0d:Portal FutebolSP Site/assets/css/style.css
 }
 
 :root {
@@ -27,11 +23,6 @@ body {
 
 .header {
   height: var(--tamanho-header);
-<<<<<<< HEAD:Portal FutebolSP Site/public/css/estilo.css
-  border-bottom: 2px solid #32b9cd;
-=======
-
->>>>>>> 3cffff60d2222d28b78c403fd167f20457f58a0d:Portal FutebolSP Site/assets/css/style.css
 }
 
 .header .container {
@@ -42,7 +33,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: white;
 }
 
 .agora {
@@ -59,7 +50,7 @@ body {
 }
 
 .titulo {
-  color: #32b9cd;
+  color: black;
   width: fit-content;
   font-weight: 500;
 }
@@ -68,16 +59,15 @@ body {
   margin: 0;
 }
 
-.clubes{
-    display: flex;
-    width: 100rem;
-    height: 50rem;
-    background-color: white;
-    align-items:;
-    
+/* BANNER */
+
+.banner {
+  height: var(--tamanho-banner);
+  color: white;
+  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-size: cover;
 }
 
-<<<<<<< HEAD:Portal FutebolSP Site/public/css/estilo.css
 .banner .container {
   justify-content: center;
   align-items: center;
@@ -130,7 +120,7 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #08652C;
   height: 150px;
   color: #fff;
   display: flex;
@@ -162,12 +152,12 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
+  background-color: #06302b;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: white;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -192,7 +182,7 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #2CC295;
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -223,7 +213,7 @@ body {
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #ED145B;
+  background-color: green;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -368,11 +358,4 @@ input {
   50%  {transform: rotate(25deg)}
   75%  {transform: rotate(-25deg)}
   100% {transform: rotate(25deg)}
-=======
-.clubes .palmeiras{
-    width: 20%;
-    height: 20%;
-    color: black;
-    background-color: black;
->>>>>>> 3cffff60d2222d28b78c403fd167f20457f58a0d:Portal FutebolSP Site/assets/css/style.css
 }
