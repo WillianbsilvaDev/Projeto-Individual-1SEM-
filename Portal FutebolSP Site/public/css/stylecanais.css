@@ -1,0 +1,76 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 40px;
+}
+
+.title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.teams-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.team {
+  width: 250px;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Corinthians */
+.corinthians {
+  background-color: #000000;
+  border: 3px solid #ffffff;
+}
+
+/* Palmeiras */
+.palmeiras {
+  background-color: #1d9b3f;
+  border: 3px solid #ffffff;
+}
+
+/* São Paulo FC */
+.saopaulo {
+  background-color: #d80000;
+  border: 3px solid #000000;
+}
+
+/* Santos */
+.santos {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #000000;
+}
+
+/* Botão */
+.subscribe-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #b20710;
+}
+
+

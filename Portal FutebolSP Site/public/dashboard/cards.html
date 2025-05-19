@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
-
-
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
-
-    <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canais dos Grandes de SP</title>
+    <link rel="stylesheet" href="./../css/dashboards.css" />
+  <link rel="stylesheet" href="/../css/stylecanais.css" />
 </head>
+<body>
+  <h1 class="title">Canais dos 4 Grandes de São Paulo</h1>
+  
+  <div class="teams-container">
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+    <div class="team corinthians">
+      <img src="https://logodownload.org/wp-content/uploads/2016/11/corinthians-logo-0.png" alt="Escudo do Corinthians" class="logo" />
+      <h2>Corinthians</h2>
+      <p>Canal oficial do Sport Club Corinthians Paulista.</p>
+      <a href="#" class="subscribe-btn">Inscreva-se</a>
+    </div>
 
-    <div class="janela">
+    <div class="team palmeiras">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/800px-Palmeiras_logo.svg.png" alt="Escudo do Palmeiras" class="logo" />
+      <h2>Palmeiras</h2>
+      <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
+      <a href="#" class="subscribe-btn">Inscreva-se</a>
+    </div>
+
+    <div class="team saopaulo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/2054px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png" alt="Escudo do São Paulo FC" class="logo" />
+      <h2>São Paulo FC</h2>
+      <p>Canal oficial do São Paulo Futebol Clube.</p>
+      <a href="#" class="subscribe-btn">Inscreva-se</a>
+    </div>
+
+    <div class="team santos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/500px-Santos_Logo.png" alt="Escudo do Santos FC" class="logo" />
+      <h2>Santos FC</h2>
+      <p>Canal oficial do Santos Futebol Clube.</p>
+      <a href="#" class="subscribe-btn">Inscreva-se</a>
+    </div>
+
+  </div>
+
+  <div class="janela">
 
         <div class="header-left dash-header">
 
@@ -33,18 +53,18 @@
             </div>
 
             <div class="btn-nav">
-                <h3>Aquários</h3>
+                <h3>Canais</h3>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                    <h3>Estatística</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Anotações</h3>
                 </a>
             </div>
 
@@ -54,67 +74,5 @@
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
-        </div>
-
-    </div>
-
 </body>
-
-<script>
-
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
-
-</script>
-
 </html>
