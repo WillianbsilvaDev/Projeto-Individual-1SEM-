@@ -17,7 +17,7 @@ body {
   gap: 30px;
 }
 
-.team {
+.time {
   width: 250px;
   padding: 20px;
   border-radius: 12px;
@@ -56,7 +56,7 @@ body {
   border: 3px solid #000000;
 }
 
-/* Estilo botão */
+/*botão */
 .subscribe-btn {
   display: inline-block;
   margin-top: 15px;
@@ -72,5 +72,6 @@ body {
 .subscribe-btn:hover {
   background-color: #b20710;
 }
+
 
 
