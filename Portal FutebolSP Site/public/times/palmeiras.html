@@ -4,59 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informações Palmeiras</title>
+    <link rel="stylesheet" href="./../css/dashboards.css" />
+    <link rel="stylesheet" href="./../css/pagPalmeiras.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: #e6f2e6;
-            color: #003d1f;
-        }
-
-        header {
-            background-color: #1e7f3c;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 120px;
-        }
-
-        h2 {
-            border-left: 5px solid #1e7f3c;
-            padding-left: 10px;
-            margin-top: 30px;
-            color: #1e7f3c;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li::before {
-            content: "⚽";
-            margin-right: 8px;
-        }
-
-    </style>
 </head>
 <body>
     <header>
@@ -92,5 +42,36 @@
         </ul>
     </div>
 
+    <div class="janela">
+
+        <div class="header-left dash-header">
+
+            <h1>PortalFutSP</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Canais</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Estatística</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Anotações</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
 </body>
 </html>
