@@ -16,28 +16,28 @@
       <img src="https://logodownload.org/wp-content/uploads/2016/11/corinthians-logo-0.png" alt="Escudo do Corinthians" class="logo" />
       <h2>Corinthians</h2>
       <p>Canal oficial do Sport Club Corinthians Paulista.</p>
-      <a href="#" class="subscribe-btn">Inscreva-se</a>
+      <button class="subscribe-btn" onclick="inscricaoCorinthians">Inscreva-se</button>
     </div>
 
     <div class="team palmeiras">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/800px-Palmeiras_logo.svg.png" alt="Escudo do Palmeiras" class="logo" />
       <h2>Palmeiras</h2>
       <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
-      <a href="#" class="subscribe-btn">Inscreva-se</a>
+      <button class="subscribe-btn" onclick="inscricaoPalmeiras">Inscreva-se</button>
     </div>
 
     <div class="team saopaulo">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/2054px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png" alt="Escudo do São Paulo FC" class="logo" />
       <h2>São Paulo FC</h2>
       <p>Canal oficial do São Paulo Futebol Clube.</p>
-      <a href="#" class="subscribe-btn">Inscreva-se</a>
+        <button class="subscribe-btn" onclick="inscricaoSp">Inscreva-se</button>
     </div>
 
     <div class="team santos">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/500px-Santos_Logo.png" alt="Escudo do Santos FC" class="logo" />
       <h2>Santos FC</h2>
       <p>Canal oficial do Santos Futebol Clube.</p>
-      <a href="#" class="subscribe-btn">Inscreva-se</a>
+      <button class="subscribe-btn" onclick="inscricaoSantos">Inscreva-se</button>
     </div>
 
   </div>
@@ -75,4 +75,30 @@
         </div>
 
 </body>
+<script>
+function inscricaoSp(){
+//habilitar butão para abir canal
+//que quando clicar vai para
+ window.location.href = "./../times/saopaulo.html";
+}
+
+function inscricaoCorinthians(){
+  //habilitar butão para abir canal
+//que quando clicar vai para
+ window.location.href = "./../times/corinthians.html";
+}
+
+function inscricaoPalmeiras(){
+  //habilitar butão para abir canal
+//que quando clicar vai para
+ window.location.href = "./../times/palmeiras.html";
+}
+
+function inscricaoSantos(){
+  //habilitar butão para abir canal
+//que quando clicar vai para
+ window.location.href = "./../times/santos.html";
+}
+
+</script>
 </html>
