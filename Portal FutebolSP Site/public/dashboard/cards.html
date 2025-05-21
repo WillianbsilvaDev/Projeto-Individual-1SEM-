@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,34 +8,41 @@
   <link rel="stylesheet" href="./../css/dashboards.css" />
   <link rel="stylesheet" href="./../css/stylecanais.css" />
 </head>
-<body>
+
+<body onload="pegarTodos()">
   <h1 class="title">Canais dos 4 Grandes de São Paulo</h1>
-  
+
   <div class="teams-container">
 
     <div class="time corinthians">
-      <img src="https://logodetimes.com/times/corinthians/logo-do-corinthians-4096.png" alt="Escudo do Corinthians" class="logo" />
+      <img src="https://logodetimes.com/times/corinthians/logo-do-corinthians-4096.png" alt="Escudo do Corinthians"
+        class="logo" />
       <h2>Corinthians</h2>
       <p>Canal oficial do Sport Club Corinthians Paulista.</p>
-      <button class="subscribe-btn" onclick="inscricaoCorinthians">Inscreva-se</button>
+      <button class="subscribe-btn" onclick="inscricaoCorinthians()">Inscreva-se</button>
     </div>
 
-    <div class="time palmeiras">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/800px-Palmeiras_logo.svg.png" alt="Escudo do Palmeiras" class="logo" />
+    <div id="palmeiras" class="time palmeiras">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/800px-Palmeiras_logo.svg.png"
+        alt="Escudo do Palmeiras" class="logo" />
       <h2>Palmeiras</h2>
       <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
       <button class="subscribe-btn" onclick="inscricaoPalmeiras()">Inscreva-se</button>
     </div>
 
     <div class="time saopaulo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/2054px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png" alt="Escudo do São Paulo FC" class="logo" />
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Brasao_do_Sao_Paulo_Futebol_Clube.svg/2054px-Brasao_do_Sao_Paulo_Futebol_Clube.svg.png"
+        alt="Escudo do São Paulo FC" class="logo" />
       <h2>São Paulo FC</h2>
       <p>Canal oficial do São Paulo Futebol Clube.</p>
-        <button class="subscribe-btn" onclick="inscricaoSp">Inscreva-se</button>
+      <button class="subscribe-btn" onclick="inscricaoSp()">Inscreva-se</button>
     </div>
 
     <div class="time santos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/500px-Santos_Logo.png" alt="Escudo do Santos FC" class="logo" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/500px-Santos_Logo.png"
+        alt="Escudo do Santos FC" class="logo" />
       <h2>Santos FC</h2>
       <p>Canal oficial do Santos Futebol Clube.</p>
       <button class="subscribe-btn" onclick="inscricaoSantos">Inscreva-se</button>
@@ -44,45 +52,119 @@
 
   <div class="janela">
 
-        <div class="header-left dash-header">
+    <div class="header-left dash-header">
 
-            <h1>PortalFutSP</h1>
+      <h1>PortalFutSP</h1>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
+      <div class="hello">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      </div>
 
-            <div class="btn-nav">
-                <h3>Canais</h3>
-            </div>
+      <div class="btn-nav">
+        <h3>Canais</h3>
+      </div>
 
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Estatística</h3>
-                </a>
-            </div>
+      <div class="btn-nav-white">
+        <a href="./dashboard.html">
+          <h3>Estatística</h3>
+        </a>
+      </div>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Anotações</h3>
-                </a>
-            </div>
+      <div class="btn-nav-white">
+        <a href="./mural.html">
+          <h3>Anotações</h3>
+        </a>
+      </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
+      <div class="btn-logout" onclick="limparSessao()">
+        <h3>Sair</h3>
+      </div>
 
-        </div>
+    </div>
 
 </body>
+
 <script>
 
-function inscricaoPalmeiras(){
-  //habilitar butão para abir canal
-//que quando clicar vai para
- window.location.href = "../times/palmeiras.html";
-}
+  function pegarTodos(){
 
+    console.log("Olá")
+    var palmeiras = document.getElementById('palmeiras')
+    //abaixo seria uma storage resgatando os id que o select está puxando e o boleano inscreva-se está habilitado
+    var numIf = true
+    if (2 == numIf){
+      palmeiras.innerHTML = ''
+    } else {
+      return
+    }
+  }
 
+  //palmeiras
+  function inscricaoPalmeiras() {
+    //habilitar botão para abir canal
+    //que quando clicar vai para
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" 
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } 
+
+   
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+      
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
 </script>
+
 </html>

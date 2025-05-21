@@ -1,0 +1,6 @@
+para que meu sistema funcione eu preciso implantar o sistema de inscreva-se (insert no banco de dados)
+depois eu precisarei com base nisso alterar o css pelo script (if) daqueles respectivos canais que retornarem como inscrito true
+depois eu crio o sistema de adm enviando para noticia o conteudo e resgatando pelo canal respectivo 
+
+
+seguinte, quando ativado a função de increva-se de qualquer canal, fará um  insert (id) resgatado do storage, e ativara o boleano, que na minha outra função quando clicada desabilirará
