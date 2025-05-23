@@ -9,12 +9,16 @@ senha varchar(45) not null
 )auto_increment = 1;
 
 
-
 create table canais(
 id int primary key,
-nomeCanal int
+nomeCanal varchar(20)
 );
 
+insert into canais(id,nomeCanal)values
+(1,'corinthians'),
+(2,'palmeiras'),
+(3,'são paulo'),
+(4,'santos');
 create table usuario_canais(
 fkUsuario int,
 fkCanais int,
@@ -33,3 +37,13 @@ fkCanais int,
 constraint chat_fkusuario foreign key (fkUsuario) references usuario_canais(fkUsuario),
 constraint chat_fkcanais foreign key (fkCanais) references usuario_canais(fkCanais)
 ) auto_increment = 1;
+
+create table noticias(
+id int primary key auto_increment,
+titulo varchar(45),
+texto varchar(100),
+fkUsuario int,
+fkCanais int,
+constraint Noticia_fkUsuario foreign key (fkUsuario) references usuario_canais(fkUsuario),
+constraint Noticia_fkCanais foreign key (fkCanais) references usuario_canais(fkCanais)
+);
