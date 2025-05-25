@@ -107,7 +107,7 @@
   
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-    console.log(idUsuario)
+    console.log('achou',idUsuario)
 
     fetch("/usuarios/inscreverPalmeiras", {
         method: "POST",
@@ -115,8 +115,7 @@
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            idUsuarioServer: idUsuario,
-            idUser : idUsuario
+            ID_USUARIO: idUsuario,
         })
     })
    .then(function (resposta) {
@@ -127,7 +126,6 @@
         }
     })
     .catch(err => {
-        console.log(`#ERRO: ${resposta}`);
         alert("Erro ao se inscrever.");
     });
   }

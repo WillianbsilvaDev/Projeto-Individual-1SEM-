@@ -122,7 +122,7 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.setItem("ID_USUARIO", json.id)
+                  var id =  sessionStorage.setItem("ID_USUARIO", json.id)
                    var email = sessionStorage.getItem("EMAIL_USUARIO")
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;

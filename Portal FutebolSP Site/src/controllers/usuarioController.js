@@ -83,12 +83,11 @@ function cadastrar(req, res) {
 
             function inscreverPalmeiras(req, res){
             var idUsuario = req.body.ID_USUARIO
-            console.log(idUsuario)
+            console.log('valordoid',idUsuario)
             usuarioModel.inscreverPalmeiras(idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    res.json({idUsuario: resultado.insertId})
                 }
             ).catch(
                 function (erro) {
