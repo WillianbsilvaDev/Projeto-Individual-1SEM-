@@ -81,10 +81,10 @@ function cadastrar(req, res) {
     }
 }
 
-            function inscreverPalmeiras(req, res){
+            function inscreverCorinthians(req, res){
             var idUsuario = req.body.ID_USUARIO
             console.log('valordoid',idUsuario)
-            usuarioModel.inscreverPalmeiras(idUsuario)
+            usuarioModel.inscreverCorinthians(idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -101,8 +101,70 @@ function cadastrar(req, res) {
             );
             }
 
+            function inscreverPalmeiras(req, res){
+                var idUsuario = req.body.ID_USUARIO
+                console.log('valordoid',idUsuario)
+                usuarioModel.inscreverPalmeiras(idUsuario)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                    }
+                ).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log(
+                            "\nHouve um erro ao realizar o cadastro! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
+                }
+
+                function inscreverSantos(req, res){
+                    var idUsuario = req.body.ID_USUARIO
+                    console.log('valordoid',idUsuario)
+                    usuarioModel.inscreverSantos(idUsuario)
+                    .then(
+                        function (resultado) {
+                            res.json(resultado);
+                        }
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                                erro.sqlMessage
+                            );
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
+                    }
+
+                    function inscreverSp(req, res){
+                        var idUsuario = req.body.ID_USUARIO
+                        console.log('valordoid',idUsuario)
+                        usuarioModel.inscreverSp(idUsuario)
+                        .then(
+                            function (resultado) {
+                                res.json(resultado);
+                            }
+                        ).catch(
+                            function (erro) {
+                                console.log(erro);
+                                console.log(
+                                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                                    erro.sqlMessage
+                                );
+                                res.status(500).json(erro.sqlMessage);
+                            }
+                        );
+                        }
 module.exports = {
     autenticar,
     cadastrar,
-    inscreverPalmeiras
+    inscreverPalmeiras,
+    inscreverCorinthians,
+    inscreverSantos,
+    inscreverSp
 }

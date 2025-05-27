@@ -22,6 +22,18 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function inscreverCorinthians(ID_USUARIO) {
+    console.log("Iniciando função inscreverCorinthians()");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        insert into usuario_canais(fkUsuario, fkCanais, inscrito)values (${ID_USUARIO}, 1, true);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function inscreverPalmeiras(ID_USUARIO) {
     console.log("Iniciando função inscreverPalmeiras()");
     
@@ -34,8 +46,36 @@ function inscreverPalmeiras(ID_USUARIO) {
     return database.executar(instrucaoSql);
 }
 
+
+function inscreverSp(ID_USUARIO) {
+    console.log("Iniciando função inscreverSp()");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        insert into usuario_canais(fkUsuario, fkCanais, inscrito)values (${ID_USUARIO}, 3, true);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function inscreverSantos(ID_USUARIO) {
+    console.log("Iniciando função inscreverSantos()");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        insert into usuario_canais(fkUsuario, fkCanais, inscrito)values (${ID_USUARIO}, 4, true);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    inscreverPalmeiras
+    inscreverPalmeiras,
+    inscreverCorinthians,
+    inscreverSp,
+    inscreverSantos
 };

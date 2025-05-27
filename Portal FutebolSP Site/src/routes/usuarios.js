@@ -16,4 +16,18 @@ router.post("/inscreverPalmeiras", function (req, res) {
     usuarioController.inscreverPalmeiras(req, res);
 });
 
+// usuario se inscrevendo no canal palmeiras
+router.post("/inscreverCorinthians", function (req, res) {
+    usuarioController.inscreverCorinthians(req, res);
+});
+
+// usuario se inscrevendo no canal palmeiras
+router.post("/inscreverSp", function (req, res) {
+    usuarioController.inscreverSp(req, res);
+});
+
+// usuario se inscrevendo no canal palmeiras
+router.post("/inscreverSantos", function (req, res) {
+    usuarioController.inscreverSantos(req, res);
+});
 module.exports = router;
