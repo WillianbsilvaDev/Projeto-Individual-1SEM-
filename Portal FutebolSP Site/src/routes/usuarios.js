@@ -30,4 +30,8 @@ router.post("/inscreverSp", function (req, res) {
 router.post("/inscreverSantos", function (req, res) {
     usuarioController.inscreverSantos(req, res);
 });
+
+router.get("verificandoInscricao", function (req, res) {
+    usuarioController.verificandoInscricao(req, res);
+});
 module.exports = router;

@@ -71,11 +71,23 @@ function inscreverSantos(ID_USUARIO) {
     return database.executar(instrucaoSql);
 }
 
+function verificandoInscricao(ID_USUARIO) {
+    console.log("Verificando os users que possuem inscrição()");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+    select * from usuario_canais where inscrito = true and fkUsuario = ${ID_USUARIO};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     autenticar,
     cadastrar,
     inscreverPalmeiras,
     inscreverCorinthians,
     inscreverSp,
-    inscreverSantos
+    inscreverSantos,
+    verificandoInscricao
 };
