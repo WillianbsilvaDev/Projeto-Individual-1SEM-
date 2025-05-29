@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', sans-serif;
-  background: url('../img/campo-futebol.jpg') no-repeat center center fixed;
+  background: url('../assets/imgs/campo-futebol.jpg') no-repeat center center fixed;
   background-size: cover;
   color: white;
 }
@@ -16,6 +16,7 @@ body {
   padding: 20px 0;
   border-bottom: 4px solid #32cd32; /* Verde gramado */
 }
+
 
 .header .container {
   width: 900px;

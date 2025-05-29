@@ -8,3 +8,7 @@ seguinte, quando ativado a função de increva-se de qualquer canal, fará um  i
 para puxar com session, primeiro eu utilizo  na pagina (ref) sessionStorage.setItem("ID_USUARIO", json.id)
 e  const idUsuario = sessionStorage.getItem('ID_USUARIO') para chamar na pag desejada
 ;
+
+validar as inscrições e colocar display block ou none de acordo com as inscrições
+
+duvida, não dá para saber o canal que deve aparecer

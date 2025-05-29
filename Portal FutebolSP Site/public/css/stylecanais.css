@@ -17,6 +17,10 @@ body {
   gap: 30px;
 }
 
+.acessar-btn{
+  display: none;
+}
+
 .time {
   width: 250px;
   padding: 20px;

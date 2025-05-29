@@ -18,12 +18,12 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                                    res.json({
-                                        id: resultadoAutenticar[0].idUsuario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
-                    })
+                        res.json({
+                            id: resultadoAutenticar[0].idUsuario,
+                            email: resultadoAutenticar[0].email,
+                            nome: resultadoAutenticar[0].nome,
+                            senha: resultadoAutenticar[0].senha
+                        })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -48,8 +48,8 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     console.log(senha);
-    
-    
+
+
     // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -57,16 +57,16 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    // }  else if (idTransportadora == undefined) {
-    //     res.status(400).send("Sua senha está undefined!");
-    }else { 
+        // }  else if (idTransportadora == undefined) {
+        //     res.status(400).send("Sua senha está undefined!");
+    } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nome, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
-                    res.json({idUsuario: resultado.insertId})
+                    res.json({ idUsuario: resultado.insertId })
                 }
             ).catch(
                 function (erro) {
@@ -81,90 +81,114 @@ function cadastrar(req, res) {
     }
 }
 
-            function inscreverCorinthians(req, res){
-            var idUsuario = req.body.ID_USUARIO
-            console.log('valordoid',idUsuario)
-            usuarioModel.inscreverCorinthians(idUsuario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+function inscreverCorinthians(req, res) {
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
+    usuarioModel.inscreverCorinthians(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
             }
-
-            function inscreverPalmeiras(req, res){
-                var idUsuario = req.body.ID_USUARIO
-                console.log('valordoid',idUsuario)
-                usuarioModel.inscreverPalmeiras(idUsuario)
-                .then(
-                    function (resultado) {
-                        res.json(resultado);
-                    }
-                ).catch(
-                    function (erro) {
-                        console.log(erro);
-                        console.log(
-                            "\nHouve um erro ao realizar o cadastro! Erro: ",
-                            erro.sqlMessage
-                        );
-                        res.status(500).json(erro.sqlMessage);
-                    }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
                 );
-                }
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-                function inscreverSantos(req, res){
-                    var idUsuario = req.body.ID_USUARIO
-                    console.log('valordoid',idUsuario)
-                    usuarioModel.inscreverSantos(idUsuario)
-                    .then(
-                        function (resultado) {
-                            res.json(resultado);
-                        }
-                    ).catch(
-                        function (erro) {
-                            console.log(erro);
-                            console.log(
-                                "\nHouve um erro ao realizar o cadastro! Erro: ",
-                                erro.sqlMessage
-                            );
-                            res.status(500).json(erro.sqlMessage);
-                        }
-                    );
-                    }
+function inscreverPalmeiras(req, res) {
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
+    usuarioModel.inscreverPalmeiras(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
-                    function inscreverSp(req, res){
-                        var idUsuario = req.body.ID_USUARIO
-                        console.log('valordoid',idUsuario)
-                        usuarioModel.inscreverSp(idUsuario)
-                        .then(
-                            function (resultado) {
-                                res.json(resultado);
-                            }
-                        ).catch(
-                            function (erro) {
-                                console.log(erro);
-                                console.log(
-                                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                                    erro.sqlMessage
-                                );
-                                res.status(500).json(erro.sqlMessage);
-                            }
-                        );
-                        }
+function inscreverSantos(req, res) {
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
+    usuarioModel.inscreverSantos(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function inscreverSp(req, res) {
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
+    usuarioModel.inscreverSp(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+function verificandoInscricao(req, res) {
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
+    usuarioModel.verificandoInscricao(idUsuario)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+                
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     inscreverPalmeiras,
     inscreverCorinthians,
     inscreverSantos,
-    inscreverSp
+    inscreverSp,
+    verificandoInscricao
 }

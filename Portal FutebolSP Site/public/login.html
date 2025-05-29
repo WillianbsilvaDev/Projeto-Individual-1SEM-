@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>PortalFutSP | Login</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -21,7 +21,7 @@
 
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <h1 class="titulo">PortalFutSP</h1>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-
+    AquaTech
     <div class="login">
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
@@ -62,9 +62,6 @@
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
 
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
 
                 <div id="div_erros_login"></div>
             </div>
@@ -88,7 +85,7 @@
 
 
     function entrar() {
-        aguardar();
+   
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -96,7 +93,7 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+         
             return false;
         }
       
@@ -138,7 +135,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+          
                 });
             }
 
