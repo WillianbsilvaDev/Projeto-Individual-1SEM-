@@ -141,3 +141,8 @@ body {
 }
 
 /* Footer */
+.footer .container{
+  display: flex;
+  justify-content: center;
+  color :white;
+}

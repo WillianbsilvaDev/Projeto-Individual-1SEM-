@@ -8,8 +8,6 @@
 
     <title>PortalFutSP | Login</title>
 
-    <script src="./js/sessao.js"></script>
-
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -76,25 +74,30 @@
 
 <script>
 
-
-    function entrar() {
+function entrar() {
    
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+   var emailVar = email_input.value;
+   var senhaVar = senha_input.value;
+    var correto = true
+   if (emailVar == "" || senhaVar == "") {
+    div_erros_login.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    correto = false
+   }else if(senhaVar.length < 8){
+    correto = false
+    div_erros_login.innerHTML = "(Sua senha deve ter 8 caracteres)";
+   }else if(!emailVar.includes('@') || !emailVar.includes('.')){
+    div_erros_login.innerHTML = "(Seu email deve conter @ e .)";
+    correto = false
+   }
 
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-         
-            return false;
-        }
-      
+   
+   console.log("FORM LOGIN: ", emailVar);
+   console.log("FORM SENHA: ", senhaVar);
+   if(correto){
+    
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
+   fetch("/usuarios/autenticar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -112,14 +115,14 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                  var id =  sessionStorage.setItem("ID_USUARIO", json.id)
-                   var email = sessionStorage.getItem("EMAIL_USUARIO")
+                    var id = sessionStorage.setItem("ID_USUARIO", json.id)
+                    var email = sessionStorage.getItem("EMAIL_USUARIO")
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
-                    console.log(id)
+                    console.log(json.id)
                 });
 
             } else {
@@ -128,7 +131,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-          
+
                 });
             }
 
@@ -137,6 +140,7 @@
         })
 
         return false;
+    }
     }
 
 

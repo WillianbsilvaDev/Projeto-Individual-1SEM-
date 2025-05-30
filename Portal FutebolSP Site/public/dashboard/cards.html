@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canais dos times</title>
-  <link rel="stylesheet" href="./../css/dashboards.css" />
   <link rel="stylesheet" href="./../css/stylecanais.css" />
 </head>
 
@@ -28,7 +27,7 @@
         alt="Escudo do Palmeiras" class="logo" />
       <h2>Palmeiras</h2>
       <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
-      <button class="subscribe-btn" onclick="inscricaoPalmeiras()">Inscreva-se</button>
+      <button class="subscribe-btn" id="subscribe_btnPalmeiras" onclick="inscricaoPalmeiras()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnPalmeiras" onclick="'acessarPalmeiras'()">Acessar</button>
     </div>
 
@@ -50,38 +49,6 @@
     </div>
 
   </div>
-
-  <div class="janela">
-
-    <div class="header-left dash-header">
-
-      <h1>PortalFutSP</h1>
-
-      <div class="hello">
-        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-      </div>
-
-      <div class="btn-nav">
-        <h3>Canais</h3>
-      </div>
-
-      <div class="btn-nav-white">
-        <a href="./dashboard.html">
-          <h3>Estatística</h3>
-        </a>
-      </div>
-
-      <div class="btn-nav-white">
-        <a href="./mural.html">
-          <h3>Anotações</h3>
-        </a>
-      </div>
-
-      <div class="btn-logout" onclick="limparSessao()">
-        <h3>Sair</h3>
-      </div>
-
-    </div>
 
 </body>
 
@@ -120,9 +87,10 @@
     })
       .then(function (json) {
         if (json.palmeiras) {
-          id_btnPalmeiras.style.display = 'none';
+          id_btnPalmeiras.style.display = 'block';
+          subscribe_btnPalmeiras.style.display = 'none'
         } else {
-          id_btnPalmeiras.style.display = 'block'
+          id_btnPalmeiras.style.display = 'none'
         }
       })
       .catch(err => {
@@ -156,7 +124,7 @@
       .then(function (resposta) {
         if (resposta.ok) {
           alert("Inscrição realizada com sucesso!");
-          id_btnPalmeiras.style.display = 'block';
+          subscribe_btnPalmeiras.style.display = 'none';
         } else {
           return res.text().then(text => { throw new Error(text) });
         }
