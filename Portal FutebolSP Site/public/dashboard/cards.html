@@ -38,7 +38,7 @@
         alt="Escudo do São Paulo FC" class="logo" />
       <h2>São Paulo FC</h2>
       <p>Canal oficial do São Paulo Futebol Clube.</p>
-      <button class="subscribe-btn"  onclick="inscricaoSp()">Inscreva-se</button>
+      <button class="subscribe-btn" onclick="inscricaoSp()">Inscreva-se</button>
     </div>
 
     <div class="time santos">
@@ -87,181 +87,184 @@
 
 <script>
 
-  function pegarTodos(){
-    var id = sessionStorage.getItem("ID_USUARIO")
-   console.log("Olá")
-   /* var palmeiras = document.getElementById('palmeiras')
-    //abaixo seria uma storage resgatando os id que o select está puxando e o boleano inscreva-se está habilitado
-    var numIf = true */
+  function pegarTodos() {
+    const id = sessionStorage.getItem("ID_USUARIO");
+    /* var palmeiras = document.getElementById('palmeiras')
+      //abaixo seria uma storage resgatando os id que o select está puxando e o boleano inscreva-se está habilitado
+      var numIf = true */
 
-      fetch("/usuarios/verificandoInscricao", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                  var id =  sessionStorage.setItem("ID_USUARIO", json.id)
-                   var email = sessionStorage.getItem("EMAIL_USUARIO")
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    setTimeout(function () {
-                        window.location = "../times/palmeiras.html";
-                    }, 1000); // apenas para exibir o loading
-                    console.log(ID_USUARIO)
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar validar canais inscritos");
-
-            }
-
-        })
-
+    if (!id) {
+      console.error("ID de usuário não encontrado na sessionStorage.");
+      return;
     }
+    console.log(id)
 
-  
 
-  
-  
-//palmeiras
+    fetch(`/usuarios/verificandoInscricao/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        return resposta.json()
+
+      } else {
+
+        console.log("Houve um erro ao tentar validar canais inscritos");
+
+      }
+
+    })
+      .then(function (json) {
+        if (json.palmeiras) {
+          id_btnPalmeiras.style.display = 'none';
+        } else {
+          id_btnPalmeiras.style.display = 'block'
+        }
+      })
+      .catch(err => {
+        alert("Erro ao se inscrever.");
+      });
+
+  }
+
+
+
+
+
+  //palmeiras
   function inscricaoPalmeiras(idCanal) {
     //habilitar botão para abrir canal
     //que quando clicar vai para
-  
+
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
     sessionStorage.canalPalmeiras = 'ativo'
-    console.log('achou',idUsuario)
+    console.log('achou', idUsuario)
 
     fetch("/usuarios/inscreverPalmeiras", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            ID_USUARIO: idUsuario,
-        })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ID_USUARIO: idUsuario,
+      })
     })
-   .then(function (resposta) {
+      .then(function (resposta) {
         if (resposta.ok) {
-            alert("Inscrição realizada com sucesso!");
-            id_btnPalmeiras.style.display = 'block';
+          alert("Inscrição realizada com sucesso!");
+          id_btnPalmeiras.style.display = 'block';
         } else {
-            return res.text().then(text => { throw new Error(text) });
+          return res.text().then(text => { throw new Error(text) });
         }
-    })
-    .catch(err => {
+      })
+      .catch(err => {
         alert("Erro ao se inscrever.");
-    });
+      });
   }
 
- 
 
 
-//palmeiras
-function inscricaoCorinthians(idCanal) {
-//habilitar botão para abrir canal
-//que quando clicar vai para
 
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
+  //palmeiras
+  function inscricaoCorinthians(idCanal) {
+    //habilitar botão para abrir canal
+    //que quando clicar vai para
 
-console.log('achou',idUsuario)
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-fetch("/usuarios/inscreverCorinthians", {
-    method: "POST",
-    headers: {
+    console.log('achou', idUsuario)
+
+    fetch("/usuarios/inscreverCorinthians", {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+      },
+      body: JSON.stringify({
         ID_USUARIO: idUsuario,
+      })
     })
-})
-.then(function (resposta) {
-    if (resposta.ok) {
-        alert("Inscrição realizada com sucesso!");
-    } else {
-        return res.text().then(text => { throw new Error(text) });
-    }
-})
-.catch(err => {
-    alert("Erro ao se inscrever.");
-});
-}
+      .then(function (resposta) {
+        if (resposta.ok) {
+          alert("Inscrição realizada com sucesso!");
+        } else {
+          return res.text().then(text => { throw new Error(text) });
+        }
+      })
+      .catch(err => {
+        alert("Erro ao se inscrever.");
+      });
+  }
 
 
 
 
-//palmeiras
-function inscricaoSp(idCanal) {
-//habilitar botão para abrir canal
-//que quando clicar vai para
+  //palmeiras
+  function inscricaoSp(idCanal) {
+    //habilitar botão para abrir canal
+    //que quando clicar vai para
 
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-console.log('achou',idUsuario)
+    console.log('achou', idUsuario)
 
-fetch("/usuarios/inscreverSp", {
-    method: "POST",
-    headers: {
+    fetch("/usuarios/inscreverSp", {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+      },
+      body: JSON.stringify({
         ID_USUARIO: idUsuario,
+      })
     })
-})
-.then(function (resposta) {
-    if (resposta.ok) {
-        alert("Inscrição realizada com sucesso!");
-    } else {
-        return res.text().then(text => { throw new Error(text) });
-    }
-})
-.catch(err => {
-    alert("Erro ao se inscrever.");
-});
-}
+      .then(function (resposta) {
+        if (resposta.ok) {
+          alert("Inscrição realizada com sucesso!");
+        } else {
+          return res.text().then(text => { throw new Error(text) });
+        }
+      })
+      .catch(err => {
+        alert("Erro ao se inscrever.");
+      });
+  }
 
 
 
 
 
-//palmeiras
-function inscricaoSantos(idCanal) {
-//habilitar botão para abrir canal
-//que quando clicar vai para
+  //palmeiras
+  function inscricaoSantos(idCanal) {
+    //habilitar botão para abrir canal
+    //que quando clicar vai para
 
-const idUsuario = sessionStorage.getItem('ID_USUARIO');
+    const idUsuario = sessionStorage.getItem('ID_USUARIO');
 
-console.log('achou',idUsuario)
+    console.log('achou', idUsuario)
 
-fetch("/usuarios/inscreverSantos", {
-    method: "POST",
-    headers: {
+    fetch("/usuarios/inscreverSantos", {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+      },
+      body: JSON.stringify({
         ID_USUARIO: idUsuario,
+      })
     })
-})
-.then(function (resposta) {
-    if (resposta.ok) {
-        alert("Inscrição realizada com sucesso!");
-    } else {
-        return res.text().then(text => { throw new Error(text) });
-    }
-})
-.catch(err => {
-    alert("Erro ao se inscrever.");
-});
-}
+      .then(function (resposta) {
+        if (resposta.ok) {
+          alert("Inscrição realizada com sucesso!");
+        } else {
+          return res.text().then(text => { throw new Error(text) });
+        }
+      })
+      .catch(err => {
+        alert("Erro ao se inscrever.");
+      });
+  }
 </script>
 
 </html>

@@ -17,7 +17,7 @@ nomeCanal varchar(20)
 insert into canais(id,nomeCanal)values
 (1,'corinthians'),
 (2,'palmeiras'),
-(3,'são paulo'),
+(3,'sao paulo'),
 (4,'santos');
 create table usuario_canais(
 fkUsuario int,

@@ -31,7 +31,7 @@ router.post("/inscreverSantos", function (req, res) {
     usuarioController.inscreverSantos(req, res);
 });
 
-router.get("/verificandoInscricao", function (req, res) {
+router.get("/verificandoInscricao/:idUsuario", function (req, res) {
     usuarioController.verificandoInscricao(req, res);
 });
 

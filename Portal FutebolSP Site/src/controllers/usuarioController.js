@@ -163,19 +163,32 @@ function inscreverSp(req, res) {
 
 
 function verificandoInscricao(req, res) {
-    var idUsuario = req.body.ID_USUARIO
+    var idUsuario = req.params.idUsuario;
     console.log('valordoid', idUsuario)
     usuarioModel.verificandoInscricao(idUsuario)
         .then(
             function (resultado) {
-                res.json(resultado);
-                
+
+                 let canais = {
+                palmeiras: false,
+                corinthians: false,
+                saopaulo: false,
+                santos: false
+            };
+            resultado.forEach(item => {
+                const nome = item.nomeCanal; // use o campo correto da tabela
+                if (nome.includes('palmeiras')) canais.palmeiras = true;
+                else if (nome.includes('corinthians')) canais.corinthians = true;
+                else if (nome.includes('santos')) canais.santos = true;
+                else if (nome.includes('são paulo')) canais.saopaulo = true})
+
+                    res.json(canais)
             }
         ).catch(
             function (erro) {
                 console.log(erro);
                 console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    "\nHouve um erro ao ver inscrições! Erro: ",
                     erro.sqlMessage
                 );
                 res.status(500).json(erro.sqlMessage);
