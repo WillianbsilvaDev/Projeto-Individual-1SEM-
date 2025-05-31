@@ -35,4 +35,7 @@ router.get("/verificandoInscricao/:idUsuario", function (req, res) {
     usuarioController.verificandoInscricao(req, res);
 });
 
+router.put("/removendoInscricao/:idUsuario", function (req, res) {
+    usuarioController.removendoInscricao(req, res);
+});
 module.exports = router;

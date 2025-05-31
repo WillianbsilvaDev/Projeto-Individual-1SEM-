@@ -90,6 +90,31 @@ function verificandoInscricao(ID_USUARIO) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function removendoInscricao(ID_USUARIO) {
+    console.log("Verificando os users que possuem inscrição()");
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        update usuario_canais
+        set inscrito = false
+        where fkUsuario = ${ID_USUARIO} and fkCanais = 2;
+
+    `;
+     const selectSql = `select 
+        usuario_canais.inscrito as inscrito,
+        c.nomeCanal as nomeCanal,
+        u.nome as nomeUsuario
+        from usuario_canais
+        inner join usuario as u on u.idUsuario = usuario_canais.fkUsuario
+        inner join canais as c on c.id = usuario_canais.fkCanais
+        where inscrito = true and fkUsuario = ${ID_USUARIO};`
+
+ 
+    return database.executar(instrucaoSql, [ID_USUARIO])
+    .then(() => database.executar(selectSql, [ID_USUARIO]));
+}
 module.exports = {
     autenticar,
     cadastrar,
@@ -97,5 +122,6 @@ module.exports = {
     inscreverCorinthians,
     inscreverSp,
     inscreverSantos,
-    verificandoInscricao
+    verificandoInscricao,
+    removendoInscricao
 };

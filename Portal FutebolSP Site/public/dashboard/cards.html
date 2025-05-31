@@ -9,11 +9,11 @@
 </head>
 
 <body onload="pegarTodos()">
-  <h1 class="title">Canais dos 4 Grandes de São Paulo</h1>
+  <h1 class="title">Inscreva-se para ter acesso ao conteúdo sobre cada canal</h1>
 
   <div class="teams-container">
 
-    <div class="time corinthians">
+    <div class="time corinthians" id="corinthians_box">
       <img src="https://logodetimes.com/times/corinthians/logo-do-corinthians-4096.png" alt="Escudo do Corinthians"
         class="logo" />
       <h2>Corinthians</h2>
@@ -21,15 +21,17 @@
       <button class="subscribe-btn" onclick="inscricaoCorinthians()">Inscreva-se</button>
     </div>
 
-    <div id="palmeiras" class="time palmeiras">
+    <div id="palmeiras_box" class="time palmeiras">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/800px-Palmeiras_logo.svg.png"
         alt="Escudo do Palmeiras" class="logo" />
       <h2>Palmeiras</h2>
       <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
       <button class="subscribe-btn" id="subscribe_btnPalmeiras" onclick="inscricaoPalmeiras()">Inscreva-se</button>
-      <button class="acessar-btn" id="id_btnPalmeiras" onclick="'acessarPalmeiras'()">Acessar</button>
+      <button class="acessar-btn" id="id_btnPalmeiras" onclick="acessarPalmeiras()">Acessar</button>
+      <button class="removerinc-btn" id="id_remPalmeiras" onclick="removerPalmeiras()">Remover Inscrição</button>
     </div>
+
 
     <div class="time saopaulo">
       <img
@@ -53,6 +55,42 @@
 </body>
 
 <script>
+function removerPalmeiras(){
+  const id = sessionStorage.getItem("ID_USUARIO");
+    /* var palmeiras = document.getElementById('palmeiras')
+      //abaixo seria uma storage resgatando os id que o select está puxando e o boleano inscreva-se está habilitado
+      var numIf = true */
+console.log(id,'aquiid')
+    if (!id) {
+      console.error("ID de usuário não encontrado na sessionStorage.");
+      return;
+    }
+    console.log(id)
+   fetch(`/usuarios/removendoInscricao/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        return resposta.json()
+
+      } else {
+
+        console.log("Houve um erro ao tentar validar canais inscritos");
+
+      }
+
+    })
+      
+}
+
+  function acessarPalmeiras() {
+    // Redireciona para a página do canal
+    window.location.href = '../times/palmeiras.html';
+  }
 
   function pegarTodos() {
     const id = sessionStorage.getItem("ID_USUARIO");
@@ -77,7 +115,7 @@
 
       if (resposta.ok) {
         return resposta.json()
-
+        alert("Inscrição removida com sucesso!");
       } else {
 
         console.log("Houve um erro ao tentar validar canais inscritos");
@@ -87,10 +125,31 @@
     })
       .then(function (json) {
         if (json.palmeiras) {
-          id_btnPalmeiras.style.display = 'block';
-          subscribe_btnPalmeiras.style.display = 'none'
+          const botao = document.getElementById('id_btnPalmeiras')
+          const botaoRemover = document.getElementById('id_remPalmeiras')
+          botao.style.display = 'inline-block';
+          botao.style.marginTop = '15px';
+          botao.style.padding = '10px 20px';
+          botao.style.backgroundColor = 'black';
+          botao.style.color = 'white';
+          botao.style.textDecoration = 'none';
+          botao.style.borderRadius = '8px';
+          botao.style.fontWeight = 'bold';
+          botao.style.transition = 'background-color 0.3s ease';
+          botao.style.display = 'inline-block';
+          subscribe_btnPalmeiras.style.display = 'none';
+          botaoRemover.style.display = 'inline-block';
+           botaoRemover.style.marginTop = '15px';
+           botaoRemover.style.padding = '10px 20px';
+           botaoRemover.style.backgroundColor = 'white';
+           botaoRemover.style.color = 'black';
+           botaoRemover.style.textDecoration = 'none';
+           botaoRemover.style.borderRadius = '8px';
+           botaoRemover.style.fontWeight = 'bold';
+           botaoRemover.style.transition = 'background-color 0.3s ease';
+
         } else {
-          id_btnPalmeiras.style.display = 'none'
+
         }
       })
       .catch(err => {
@@ -123,8 +182,19 @@
     })
       .then(function (resposta) {
         if (resposta.ok) {
-          alert("Inscrição realizada com sucesso!");
+           const botao = document.getElementById('id_btnPalmeiras');
+          botao.style.display = 'inline-block';
+          botao.style.marginTop = '15px';
+          botao.style.padding = '10px 20px';
+          botao.style.backgroundColor = 'blue';
+          botao.style.color = 'white';
+          botao.style.textDecoration = 'none';
+          botao.style.borderRadius = '8px';
+          botao.style.fontWeight = 'bold';
+          botao.style.transition = 'background-color 0.3s ease';
           subscribe_btnPalmeiras.style.display = 'none';
+          id_btnPalmeiras.style.display = 'inline-block';
+
         } else {
           return res.text().then(text => { throw new Error(text) });
         }

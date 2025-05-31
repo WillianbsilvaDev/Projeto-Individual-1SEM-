@@ -15,10 +15,14 @@ body {
   display: flex;
   justify-content: center;
   gap: 30px;
+  align-items: flex-start;
 }
 
-.acessar-btn{
+.acessar-btn {
   display: none;
+}
+.removerinc-btn{
+ display: none;
 }
 
 .time {
@@ -73,9 +77,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
+
 .subscribe-btn:hover {
   background-color: #b20710;
 }
 
 
-
+.acessar-btn:hover {
+  background-color: #b20710;
+}

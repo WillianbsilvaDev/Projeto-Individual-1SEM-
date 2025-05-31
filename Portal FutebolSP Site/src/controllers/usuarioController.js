@@ -196,6 +196,39 @@ function verificandoInscricao(req, res) {
         );
 }
 
+function removendoInscricao(req, res) {
+    var idUsuario = req.params.idUsuario;
+    console.log('valordoid', idUsuario)
+    usuarioModel.removendoInscricao(idUsuario)
+        .then(
+            function (resultado) {
+
+                 let canais = {
+                palmeiras: false,
+                corinthians: false,
+                saopaulo: false,
+                santos: false
+            };
+            resultado.forEach(item => {
+                const nome = item.nomeCanal; // use o campo correto da tabela
+                if (nome.includes('palmeiras')) canais.palmeiras = true;
+                else if (nome.includes('corinthians')) canais.corinthians = true;
+                else if (nome.includes('santos')) canais.santos = true;
+                else if (nome.includes('são paulo')) canais.saopaulo = true})
+
+                    res.json(canais)
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao ver inscrições! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 module.exports = {
     autenticar,
     cadastrar,
@@ -203,5 +236,6 @@ module.exports = {
     inscreverCorinthians,
     inscreverSantos,
     inscreverSp,
-    verificandoInscricao
+    verificandoInscricao,
+    removendoInscricao
 }
