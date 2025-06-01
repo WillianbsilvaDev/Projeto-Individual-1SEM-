@@ -81,85 +81,37 @@ function cadastrar(req, res) {
     }
 }
 
+function inscreverCanal(req, res, nomeTime) {
+    var idUsuario = req.body.ID_USUARIO;
+    console.log('valordoid', idUsuario);
+
+    usuarioModel[`inscrever${nomeTime}`](idUsuario)
+        .then(resultado => {
+            res.json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            console.log(`\nHouve um erro ao realizar o cadastro no canal ${nomeTime}! Erro: `, erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 function inscreverCorinthians(req, res) {
-    var idUsuario = req.body.ID_USUARIO
-    console.log('valordoid', idUsuario)
-    usuarioModel.inscreverCorinthians(idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+  inscreverCanal(req, res, 'Corinthians');
 }
 
 function inscreverPalmeiras(req, res) {
-    var idUsuario = req.body.ID_USUARIO
-    console.log('valordoid', idUsuario)
-    usuarioModel.inscreverPalmeiras(idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+inscreverCanal(req, res, 'Palmeiras');
 }
 
 function inscreverSantos(req, res) {
-    var idUsuario = req.body.ID_USUARIO
-    console.log('valordoid', idUsuario)
-    usuarioModel.inscreverSantos(idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+  inscreverCanal(req, res, 'Santos');
 }
 
 function inscreverSp(req, res) {
-    var idUsuario = req.body.ID_USUARIO
-    console.log('valordoid', idUsuario)
-    usuarioModel.inscreverSp(idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+inscreverCanal(req, res, 'Sp');
 }
+
 
 
 function verificandoInscricao(req, res) {
@@ -197,38 +149,38 @@ function verificandoInscricao(req, res) {
 }
 
 function removendoInscricao(req, res) {
-    var idUsuario = req.params.idUsuario;
-    console.log('valordoid', idUsuario)
-    usuarioModel.removendoInscricao(idUsuario)
-        .then(
-            function (resultado) {
+    const idUsuario = req.params.idUsuario;
+    const time = req.params.time;
 
-                 let canais = {
-                palmeiras: false,
-                corinthians: false,
-                saopaulo: false,
-                santos: false
-            };
-            resultado.forEach(item => {
-                const nome = item.nomeCanal; // use o campo correto da tabela
-                if (nome.includes('palmeiras')) canais.palmeiras = true;
-                else if (nome.includes('corinthians')) canais.corinthians = true;
-                else if (nome.includes('santos')) canais.santos = true;
-                else if (nome.includes('são paulo')) canais.saopaulo = true})
+    const idTime = {
+        corinthians: 1,
+        palmeiras: 2,
+        saopaulo: 3,
+        santos: 4
+    };
 
-                    res.json(canais)
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao ver inscrições! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+    const idCanal = idTime[time];
+
+    if (!idCanal) {
+        return res.status(400).json({ mensagem: "Time inválido!" });
+    }
+
+    usuarioModel.removendoInscricao(idUsuario, idCanal)
+        .then((resultado) => {
+            res.status(200).json({
+                mensagem: `Inscrição removida com sucesso do canal ${time}`,
+                canaisAtuais: resultado
+            });
+        })
+        .catch((erro) => {
+            console.error("Erro ao remover inscrição:", erro.sqlMessage || erro);
+            res.status(500).json({ mensagem: "Erro ao remover inscrição." });
+        });
 }
+
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -237,5 +189,6 @@ module.exports = {
     inscreverSantos,
     inscreverSp,
     verificandoInscricao,
-    removendoInscricao
+    removendoInscricao,
+    inscreverCanal
 }
