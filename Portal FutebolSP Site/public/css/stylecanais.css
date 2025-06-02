@@ -3,12 +3,69 @@ body {
   background-color: #f0f0f0;
   text-align: center;
   padding: 40px;
+
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', sans-serif;
+  background: url('../assets/imgs/loginCadastro.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  
 }
+
+/* Header */
+.header {
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 20px 0;
+  border-bottom: 4px solid #32cd32; /* Verde gramado */
+}
+
+
+.header .container {
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo {
+  font-size: 32px;
+  color: #32cd32;
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffd700; /* dourado */
+}
+
+.navbar .agora a {
+  color: #ffd700;
+  border-bottom: 2px solid #ffd700;
+}
+
+/*fim header */
 
 .title {
   font-size: 32px;
   margin-bottom: 40px;
-  color: #222;
+  color: white;
+  background-color: #1d9b3f;
+  margin-left: 18%;
+  width: 65%;
 }
 
 .teams-container {

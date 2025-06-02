@@ -9,6 +9,22 @@
 </head>
 
 <body onload="pegarTodos()">
+
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">PortalFutSP</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="../index.html">Inicial</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="../dashboard/dashboard.html">Grafícos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  
   <h1 class="title">Inscreva-se para ter acesso ao conteúdo sobre cada canal</h1>
 
   <div class="teams-container">
@@ -20,7 +36,8 @@
       <p>Canal oficial do Sport Club Corinthians Paulista.</p>
       <button class="subscribe-btn" id="subscribe_btnCorinthians" onclick="inscricaoCorinthians()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnCorinthians" onclick="acessarCorinthians()">Acessar</button>
-      <button class="removerinc-btn" id="id_remCorinthians" onclick="removerInscricao('corinthians')">Remover Inscrição</button> 
+      <button class="removerinc-btn" id="id_remCorinthians" onclick="removerInscricao('corinthians')">Remover
+        Inscrição</button>
     </div>
 
     <div id="palmeiras_box" class="time palmeiras">
@@ -31,7 +48,8 @@
       <p>Canal oficial da Sociedade Esportiva Palmeiras.</p>
       <button class="subscribe-btn" id="subscribe_btnPalmeiras" onclick="inscricaoPalmeiras()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnPalmeiras" onclick="acessarPalmeiras()">Acessar</button>
-      <button class="removerinc-btn" id="id_remPalmeiras" onclick="removerInscricao('palmeiras')">Remover Inscrição</button> 
+      <button class="removerinc-btn" id="id_remPalmeiras" onclick="removerInscricao('palmeiras')">Remover
+        Inscrição</button>
     </div>
 
 
@@ -43,7 +61,7 @@
       <p>Canal oficial do São Paulo Futebol Clube.</p>
       <button class="subscribe-btn" id="subscribe_btnSp" onclick="inscricaoSp()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnSp" onclick="acessarsaopaulo()">Acessar</button>
-      <button class="removerinc-btn" id="id_remSp" onclick="removerInscricao('saopaulo')">Remover Inscrição</button> 
+      <button class="removerinc-btn" id="id_remSp" onclick="removerInscricao('saopaulo')">Remover Inscrição</button>
     </div>
 
     <div class="time santos">
@@ -53,7 +71,7 @@
       <p>Canal oficial do Santos Futebol Clube.</p>
       <button class="subscribe-btn" id="subscribe_btnSantos" onclick="inscricaoSantos()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnSantos" onclick="acessarSantos()">Acessar</button>
-      <button class="removerinc-btn" id="id_remSantos" onclick="removerInscricao('santos')">Remover Inscrição</button> 
+      <button class="removerinc-btn" id="id_remSantos" onclick="removerInscricao('santos')">Remover Inscrição</button>
 
     </div>
 
@@ -62,8 +80,6 @@
 </body>
 
 <script>
-
-
 
   function inscreverNoCanal(clube, canalId) {
     const idUsuario = sessionStorage.getItem('ID_USUARIO');
@@ -85,24 +101,24 @@
           const botaoRemover = document.getElementById(`id_rem${clube}`);
           if (botao) {
             botao.style.display = 'inline-block';
-          botao.style.marginTop = '15px';
-          botao.style.padding = '10px 20px';
-          botao.style.backgroundColor = 'black';
-          botao.style.color = 'white';
-          botao.style.textDecoration = 'none';
-          botao.style.borderRadius = '8px';
-          botao.style.fontWeight = 'bold';
-          botao.style.transition = 'background-color 0.3s ease';
-          botao.style.display = 'inline-block';
-          botaoRemover.style.display = 'inline-block';
-          botaoRemover.style.marginTop = '15px';
-          botaoRemover.style.padding = '10px 20px';
-          botaoRemover.style.backgroundColor = 'white';
-          botaoRemover.style.color = 'black';
-          botaoRemover.style.textDecoration = 'none';
-          botaoRemover.style.borderRadius = '8px';
-          botaoRemover.style.fontWeight = 'bold';
-          botaoRemover.style.transition = 'background-color 0.3s ease';
+            botao.style.marginTop = '15px';
+            botao.style.padding = '10px 20px';
+            botao.style.backgroundColor = 'black';
+            botao.style.color = 'white';
+            botao.style.textDecoration = 'none';
+            botao.style.borderRadius = '8px';
+            botao.style.fontWeight = 'bold';
+            botao.style.transition = 'background-color 0.3s ease';
+            botao.style.display = 'inline-block';
+            botaoRemover.style.display = 'inline-block';
+            botaoRemover.style.marginTop = '15px';
+            botaoRemover.style.padding = '10px 20px';
+            botaoRemover.style.backgroundColor = 'white';
+            botaoRemover.style.color = 'black';
+            botaoRemover.style.textDecoration = 'none';
+            botaoRemover.style.borderRadius = '8px';
+            botaoRemover.style.fontWeight = 'bold';
+            botaoRemover.style.transition = 'background-color 0.3s ease';
           }
 
           if (subscribeBtn) {
@@ -141,27 +157,28 @@
   }
 
 
-function removerInscricao(time) {
-  const id = sessionStorage.getItem("ID_USUARIO");
+  function removerInscricao(time) {
+    const id = sessionStorage.getItem("ID_USUARIO");
 
-  if (!id) {
-    console.error("ID de usuário não encontrado na sessionStorage.");
-    return;
+    if (!id) {
+      console.error("ID de usuário não encontrado na sessionStorage.");
+      return;
+    }
+
+    fetch(`/usuarios/removendoInscricao/${id}/${time}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        location.reload();
+        return resposta.json();
+      } else {
+        console.error("Houve um erro ao tentar validar canais inscritos");
+      }
+    });
   }
-
-  fetch(`/usuarios/removendoInscricao/${id}/${time}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(function (resposta) {
-    if (resposta.ok) {
-      return resposta.json();
-    } else {
-      console.error("Houve um erro ao tentar validar canais inscritos");
-    }
-  });
-}
 
 
   function acessarPalmeiras() {
@@ -169,17 +186,17 @@ function removerInscricao(time) {
     window.location.href = '../times/palmeiras.html';
   }
 
-    function acessarCorinthians() {
+  function acessarCorinthians() {
     // Redireciona para a página do canal
     window.location.href = '../times/corinthians.html';
   }
 
-    function acessarsaopaulo() {
+  function acessarsaopaulo() {
     // Redireciona para a página do canal
     window.location.href = '../times/saopaulo.html';
   }
 
-    function acessarSantos() {
+  function acessarSantos() {
     // Redireciona para a página do canal
     window.location.href = '../times/santos.html';
   }
@@ -239,9 +256,78 @@ function removerInscricao(time) {
           botaoRemover.style.borderRadius = '8px';
           botaoRemover.style.fontWeight = 'bold';
           botaoRemover.style.transition = 'background-color 0.3s ease';
+        }
 
-        } else {
+        if (json.corinthians) {
+          const botao = document.getElementById('id_btnCorinthians');
+          const botaoRemover = document.getElementById('id_remCorinthians');
+          botao.style.display = 'inline-block';
+          botao.style.marginTop = '15px';
+          botao.style.padding = '10px 20px';
+          botao.style.backgroundColor = 'black';
+          botao.style.color = 'white';
+          botao.style.textDecoration = 'none';
+          botao.style.borderRadius = '8px';
+          botao.style.fontWeight = 'bold';
+          botao.style.transition = 'background-color 0.3s ease';
+          document.getElementById('subscribe_btnCorinthians').style.display = 'none';
+          botaoRemover.style.display = 'inline-block';
+          botaoRemover.style.marginTop = '15px';
+          botaoRemover.style.padding = '10px 20px';
+          botaoRemover.style.backgroundColor = 'white';
+          botaoRemover.style.color = 'black';
+          botaoRemover.style.textDecoration = 'none';
+          botaoRemover.style.borderRadius = '8px';
+          botaoRemover.style.fontWeight = 'bold';
+          botaoRemover.style.transition = 'background-color 0.3s ease';
+        }
 
+        if (json.saopaulo) {
+          const botao = document.getElementById('id_btnSp');
+          const botaoRemover = document.getElementById('id_remSp');
+          botao.style.display = 'inline-block';
+          botao.style.marginTop = '15px';
+          botao.style.padding = '10px 20px';
+          botao.style.backgroundColor = 'black';
+          botao.style.color = 'white';
+          botao.style.textDecoration = 'none';
+          botao.style.borderRadius = '8px';
+          botao.style.fontWeight = 'bold';
+          botao.style.transition = 'background-color 0.3s ease';
+          document.getElementById('subscribe_btnSp').style.display = 'none';
+          botaoRemover.style.display = 'inline-block';
+          botaoRemover.style.marginTop = '15px';
+          botaoRemover.style.padding = '10px 20px';
+          botaoRemover.style.backgroundColor = 'white';
+          botaoRemover.style.color = 'black';
+          botaoRemover.style.textDecoration = 'none';
+          botaoRemover.style.borderRadius = '8px';
+          botaoRemover.style.fontWeight = 'bold';
+          botaoRemover.style.transition = 'background-color 0.3s ease';
+        }
+
+        if (json.santos) {
+          const botao = document.getElementById('id_btnSantos');
+          const botaoRemover = document.getElementById('id_remSantos');
+          botao.style.display = 'inline-block';
+          botao.style.marginTop = '15px';
+          botao.style.padding = '10px 20px';
+          botao.style.backgroundColor = 'black';
+          botao.style.color = 'white';
+          botao.style.textDecoration = 'none';
+          botao.style.borderRadius = '8px';
+          botao.style.fontWeight = 'bold';
+          botao.style.transition = 'background-color 0.3s ease';
+          document.getElementById('subscribe_btnSantos').style.display = 'none';
+          botaoRemover.style.display = 'inline-block';
+          botaoRemover.style.marginTop = '15px';
+          botaoRemover.style.padding = '10px 20px';
+          botaoRemover.style.backgroundColor = 'white';
+          botaoRemover.style.color = 'black';
+          botaoRemover.style.textDecoration = 'none';
+          botaoRemover.style.borderRadius = '8px';
+          botaoRemover.style.fontWeight = 'bold';
+          botaoRemover.style.transition = 'background-color 0.3s ease';
         }
       })
       .catch(err => {

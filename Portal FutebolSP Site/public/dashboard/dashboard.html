@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Inscrições</title>
+</head>
+<body>
+  <div class="grafico-Principal">
+    <canvas id="graficoInscricoes" width="400" height="150" style="background:#f4f4f4;"></canvas>
+  </div>
+
+  <script>
+    let myChart;
+
+    function atualizarGrafico() {
+      fetch("/graficos/inscricoes")
+        .then(res => res.json())
+        .then(dados => {
+          const labels = dados.map(item => item.nomeCanal);
+          const valores = dados.map(item => item.total);
+
+          if (!myChart) {
+            const ctx = document.getElementById("graficoInscricoes").getContext("2d");
+            myChart = new Chart(ctx, {
+              type: "bar",
+              data: {
+                labels: labels,
+                datasets: [{
+                  label: "Inscrições por Canal",
+                  data: valores,
+                  backgroundColor: ["#FF5733", "#33FF57", "#3357FF", "#FF33A8"],
+                  borderColor: ["#FF5733", "#33FF57", "#3357FF", "#FF33A8"],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                responsive: true,
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          } else {
+            myChart.data.labels = labels;
+            myChart.data.datasets[0].data = valores;
+            myChart.update();
+          }
+        })
+        .catch(err => console.error("Erro ao buscar dados do gráfico:", err));
+    }
+
+    // Chamada inicial
+    atualizarGrafico();
+
+    // Atualizar a cada 5 segundos
+    setInterval(atualizarGrafico, 5000);
+  </script>
+</body>
+</html>

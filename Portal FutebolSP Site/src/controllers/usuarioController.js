@@ -132,7 +132,7 @@ function verificandoInscricao(req, res) {
                 if (nome.includes('palmeiras')) canais.palmeiras = true;
                 else if (nome.includes('corinthians')) canais.corinthians = true;
                 else if (nome.includes('santos')) canais.santos = true;
-                else if (nome.includes('são paulo')) canais.saopaulo = true})
+                else if (nome.includes('sao paulo')) canais.saopaulo = true})
 
                     res.json(canais)
             }
