@@ -28,3 +28,15 @@ primary key (fkUsuario,fkCanais),
 constraint usuarioFK foreign key (fkUsuario) references usuario(idUsuario),
 constraint canaisFK foreign key (fkCanais) references canais(id)
 );
+
+CREATE TABLE resultado_quiz (
+    idResultado int primary key auto_increment,
+    fkUsuario int,
+    pergunta varchar(100),
+    resposta_usuario varchar(100) not null,
+    acertou boolean not null,
+    data_resposta datetime default current_timestamp,
+    foreign key (fkUsuario) references usuario(idUsuario)
+);
+
+
