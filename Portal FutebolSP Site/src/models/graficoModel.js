@@ -2,11 +2,12 @@ var database = require("../database/config")
 
 function contarInscricoes() {
   const query = `
-    SELECT c.nomeCanal, COUNT(*) AS total
-    FROM usuario_canais u_c
-    JOIN canais c ON c.id = u_c.fkCanais
-    WHERE u_c.inscrito = true
-    GROUP BY c.nomeCanal;
+      select c.nomeCanal, COUNT(*) AS total
+    from usuario_canais as u_c
+    join canais as c on c.id = u_c.fkCanais
+    join usuario as u on u.idUsuario = u_c.fkUsuario
+    where u_c.inscrito = true
+    group by c.nomeCanal;
   `;
   return database.executar(query);
 }

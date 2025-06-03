@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canais dos times</title>
   <link rel="stylesheet" href="./../css/stylecanais.css" />
+
 </head>
 
 <body onload="pegarTodos()">
@@ -18,9 +19,6 @@
                     <a href="../index.html">Sair</a>
                 </li>
                 <li>|</li>
-                <li>
-                    <a href="../quiz/quiz.html">Teste</a>
-                </li>
                 <li class="agora">
                     <a href="../dashboard/dashboard.html">Grafícos</a>
                 </li>
@@ -40,8 +38,7 @@
       <p>Canal oficial do Sport Club Corinthians Paulista.</p>
       <button class="subscribe-btn" id="subscribe_btnCorinthians" onclick="inscricaoCorinthians()">Inscreva-se</button>
       <button class="acessar-btn" id="id_btnCorinthians" onclick="acessarCorinthians()">Acessar</button>
-      <button class="removerinc-btn" id="id_remCorinthians" onclick="removerInscricao('corinthians')">Remover
-        Inscrição</button>
+      <button class="removerinc-btn" id="id_remCorinthians" onclick="removerInscricao('corinthians')">RemoverInscrição</button>
     </div>
 
     <div id="palmeiras_box" class="time palmeiras">
@@ -136,8 +133,7 @@
         }
       })
       .catch(err => {
-        console.error('Erro ao se inscrever:', err);
-        alert("Erro ao se inscrever.");
+        console.error('erro:', err);
       });
   }
 
@@ -164,11 +160,6 @@
   function removerInscricao(time) {
     const id = sessionStorage.getItem("ID_USUARIO");
 
-    if (!id) {
-      console.error("ID de usuário não encontrado na sessionStorage.");
-      return;
-    }
-
     fetch(`/usuarios/removendoInscricao/${id}/${time}`, {
       method: "PUT",
       headers: {
@@ -186,22 +177,18 @@
 
 
   function acessarPalmeiras() {
-    // Redireciona para a página do canal
     window.location.href = '../times/palmeiras.html';
   }
 
   function acessarCorinthians() {
-    // Redireciona para a página do canal
     window.location.href = '../times/corinthians.html';
   }
 
   function acessarsaopaulo() {
-    // Redireciona para a página do canal
     window.location.href = '../times/saopaulo.html';
   }
 
   function acessarSantos() {
-    // Redireciona para a página do canal
     window.location.href = '../times/santos.html';
   }
 
@@ -211,12 +198,7 @@
       //abaixo seria uma storage resgatando os id que o select está puxando e o boleano inscreva-se está habilitado
       var numIf = true */
 
-    if (!id) {
-      console.error("ID de usuário não encontrado na sessionStorage.");
-      return;
-    }
     console.log(id)
-
 
     fetch(`/usuarios/verificandoInscricao/${id}`, {
       method: "GET",
@@ -228,10 +210,10 @@
 
       if (resposta.ok) {
         return resposta.json()
-        alert("Inscrição removida com sucesso!");
+        alert("sucesso na remoção");
       } else {
 
-        console.log("Houve um erro ao tentar validar canais inscritos");
+        console.log("falha");
 
       }
 
@@ -339,6 +321,7 @@
       });
 
   }
+
 
 </script>
 

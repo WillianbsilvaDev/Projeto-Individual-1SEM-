@@ -2,12 +2,10 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f0f0;
   text-align: center;
-  padding: 40px;
-
   margin: 0;
   padding: 0;
   font-family: 'Barlow', sans-serif;
-  background: url('../assets/imgs/loginCadastro.jpg') no-repeat center center fixed;
+  background: url('../assets/imgs/campo-futebol.jpg') no-repeat center center fixed;
   background-size: cover;
   color: white;
   
@@ -17,7 +15,7 @@ body {
 .header {
   background-color: rgba(0, 0, 0, 0.85);
   padding: 20px 0;
-  border-bottom: 4px solid #32cd32; /* Verde gramado */
+  border-bottom: 4px solid #32cd32; 
 }
 
 
@@ -49,7 +47,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #ffd700; /* dourado */
+  color: #ffd700; 
 }
 
 .navbar .agora a {
@@ -96,32 +94,29 @@ body {
   margin-bottom: 15px;
 }
 
-/* Corinthians */
+
 .corinthians {
   background-color: #000000;
   border: 3px solid #ffffff;
 }
 
-/* Palmeiras */
 .palmeiras {
   background-color: #1d9b3f;
   border: 3px solid #ffffff;
 }
 
-/* São Paulo FC */
 .saopaulo {
   background-color: #d80000;
   border: 3px solid #000000;
 }
 
-/* Santos */
 .santos {
   background-color: #ffffff;
   color: #000000;
   border: 3px solid #000000;
 }
 
-/*botão */
+/*botao */
 .subscribe-btn {
   display: inline-block;
   margin-top: 15px;
@@ -143,3 +138,13 @@ body {
 .acessar-btn:hover {
   background-color: #b20710;
 }
+
+/* minha dash*/
+  .grafico-Principal {
+    margin: 50px;
+    display: block;
+    border-radius: 10px;
+    box-sizing: border-box;
+    height: 219px;
+    width: 1095px;
+  }

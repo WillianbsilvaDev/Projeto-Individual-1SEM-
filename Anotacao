@@ -12,3 +12,7 @@ e  const idUsuario = sessionStorage.getItem('ID_USUARIO') para chamar na pag des
 validar as inscrições e colocar display block ou none de acordo com as inscrições
 
 duvida, não dá para saber o canal que deve aparecer
+
+kpi informando quais canais o user está inscrito.
+
+

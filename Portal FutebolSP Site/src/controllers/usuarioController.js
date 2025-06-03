@@ -82,16 +82,14 @@ function cadastrar(req, res) {
 }
 
 function inscreverCanal(req, res, nomeTime) {
-    var idUsuario = req.body.ID_USUARIO;
-    console.log('valordoid', idUsuario);
+    var idUsuario = req.body.ID_USUARIO
+    console.log('valordoid', idUsuario)
 
     usuarioModel[`inscrever${nomeTime}`](idUsuario)
         .then(resultado => {
             res.json(resultado);
         })
         .catch(erro => {
-            console.log(erro);
-            console.log(`\nHouve um erro ao realizar o cadastro no canal ${nomeTime}! Erro: `, erro.sqlMessage);
             res.status(500).json(erro.sqlMessage);
         });
 }
@@ -115,7 +113,7 @@ inscreverCanal(req, res, 'Sp');
 
 
 function verificandoInscricao(req, res) {
-    var idUsuario = req.params.idUsuario;
+    var idUsuario = req.params.idUsuario
     console.log('valordoid', idUsuario)
     usuarioModel.verificandoInscricao(idUsuario)
         .then(
@@ -128,7 +126,7 @@ function verificandoInscricao(req, res) {
                 santos: false
             };
             resultado.forEach(item => {
-                const nome = item.nomeCanal; // use o campo correto da tabela
+                const nome = item.nomeCanal
                 if (nome.includes('palmeiras')) canais.palmeiras = true;
                 else if (nome.includes('corinthians')) canais.corinthians = true;
                 else if (nome.includes('santos')) canais.santos = true;
@@ -161,20 +159,16 @@ function removendoInscricao(req, res) {
 
     const idCanal = idTime[time];
 
-    if (!idCanal) {
-        return res.status(400).json({ mensagem: "Time inválido!" });
-    }
-
     usuarioModel.removendoInscricao(idUsuario, idCanal)
         .then((resultado) => {
             res.status(200).json({
-                mensagem: `Inscrição removida com sucesso do canal ${time}`,
+                mensagem: `remoção do time: ${time} com sucesso`,
                 canaisAtuais: resultado
             });
         })
         .catch((erro) => {
-            console.error("Erro ao remover inscrição:", erro.sqlMessage || erro);
-            res.status(500).json({ mensagem: "Erro ao remover inscrição." });
+            console.error("erro:", erro.sqlMessage || erro);
+            res.status(500).json({ mensagem: "erro" });
         });
 }
 

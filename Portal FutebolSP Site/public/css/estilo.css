@@ -15,7 +15,7 @@ body {
 .header {
   background-color: rgba(0, 0, 0, 0.85);
   padding: 20px 0;
-  border-bottom: 4px solid #32cd32; /* Verde gramado */
+  border-bottom: 4px solid #32cd32;
 }
 
 
@@ -47,7 +47,7 @@ body {
 }
 
 .navbar a:hover {
-  color: #ffd700; /* dourado */
+  color: #ffd700; 
 }
 
 .navbar .agora a {

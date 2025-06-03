@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./../css/dashboards.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard de Inscrições</title>
 </head>
-<style>
-  body{
-    background-color: black;
-  }
-</style>
 <body>
-  <div class="grafico-Principal">
-    <canvas id="graficoInscricoes" width="400" height="150" style="background:#f4f4f4;"></canvas>
+  <div class="header">
+    <div class="container">
+      <h1 class="titulo">PortalFutSP</h1>
+      <ul class="navbar">
+        <li>
+          <a href="../index.html">Sair</a>
+        </li>
+        <li>|</li>
+        <li class="agora">
+          <a href="../posLogin/cards.html">Canais</a>
+        </li>
+      </ul>
+    </div>
   </div>
+
+  <div class="grafico-Principal">
+    <canvas id="graficoInscricoes" ></canvas>
+  </div>
+
 
   <script>
     let myChart;
 
-    function atualizarGrafico() {
+    function inscritos() {
       fetch("/graficos/inscricoes")
         .then(res => res.json())
         .then(dados => {
-          const labels = dados.map(item => item.nomeCanal);
-          const valores = dados.map(item => item.total);
+          const labels = [];
+          const valores = [];
+          for (let i = 0; i < dados.length; i++) {
+            labels.push(dados[i].nomeCanal);
+            valores.push(dados[i].total);
+          }
 
           if (!myChart) {
             const ctx = document.getElementById("graficoInscricoes").getContext("2d");
@@ -35,8 +52,8 @@
                 datasets: [{
                   label: "Inscrições por Canal",
                   data: valores,
-                  backgroundColor: ["#FF5733", "#33FF57", "#3357FF", "#FF33A8"],
-                  borderColor: ["#FF5733", "#33FF57", "#3357FF", "#FF33A8"],
+                  backgroundColor: ["#33FF57", "red", "white", "black"],
+                  borderColor: ["white", "black", "black", "white"],
                   borderWidth: 1
                 }]
               },
@@ -55,14 +72,15 @@
             myChart.update();
           }
         })
-        .catch(err => console.error("Erro ao buscar dados do gráfico:", err));
     }
 
-    // Chamada inicial
-    atualizarGrafico();
+    inscritos();
 
-    // Atualizar a cada 5 segundos
-    setInterval(atualizarGrafico, 5000);
+    setInterval(inscritos, 5000);
+
+
+
   </script>
 </body>
+
 </html>

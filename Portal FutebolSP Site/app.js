@@ -17,7 +17,7 @@ var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
 var dashRouter = require("./src/routes/graficos");
-var quizRouter = require("./src/routes/quiz");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use("/usuarios", usuarioRouter);
 app.use("/graficos", dashRouter);
-app.use("/quiz", quizRouter);
+
 // app.use("/aquarios", aquariosRouter);
 // app.use("/empresas", empresasRouter);
 
